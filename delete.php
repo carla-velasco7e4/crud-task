@@ -30,12 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
         }
     }
-    header("Location: index.php"); // Redirigir de vuelta a la lista de tareas
+    header("Location: create.php");
     exit();
 }
 ?>
 
 <a href="index.php">logout</a><br><br>
+<a href="./type/create.php">types list</a>
 
 <h1>Delete</h1>
 <p>Do you want to delete this task?</p>

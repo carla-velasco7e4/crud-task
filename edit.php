@@ -43,12 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    header("Location: index.php"); // Redirect back to the task list
+    header("Location: create.php"); // Redirect back to the task list
     exit();
 }
 ?>
 
 <a href="index.php">logout</a><br><br>
+<a href="./type/create.php">types list</a>
 
 <h1>Edit</h1>
 <form action="edit.php?id=<?= $taskId; ?>" method="post">
@@ -71,12 +72,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="assignedTo">Assigned To:</label>
     <input type="text" name="assignedTo" required value="<?= $taskToEdit['assignedTo']; ?>"><br><br>
 
+
     <label for="type">Type:</label>
     <select name="type">
-        <option <?= $taskToEdit['type'] == "PHP" ? "selected" : "" ; ?> value="PHP">PHP</option>
-        <option <?= $taskToEdit['type'] == "Frontend" ? "selected" : "" ; ?> value="Frontend">Frontend</option>
-        <option <?= $taskToEdit['type'] == "Logistics" ? "selected" : "" ; ?> value="Logistic">Logistic</option>
-    </select><br><br>
+    <?php
+        foreach ($_SESSION["types"] as $index => $item) {
+            echo "<option " . ($taskToEdit['type'] == $item['title'] ? "selected" : "") . " value='" . $item['title'] . "'>" . $item['title'] . "</option>";
+        }
+    ?>
+
+    <?= $taskToEdit['status'] == "Done" ? "selected" : "" ; ?>
+    </select>
+    <br><Sbr>
 
     <!-- Display other input fields for editing -->
     <button type="submit">Update Task</button>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 unset($_SESSION["isAdmin"]);
-//session_unset();
+session_unset();
 
 //check the request method (to see if the form has been sended)
 

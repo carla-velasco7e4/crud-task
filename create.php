@@ -42,9 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<a href="index.php">logout</a>
+<a href="index.php">logout</a><br><br>
 
 <?php if($_SESSION['isAdmin'] === true) { ?>
+    <a href="./type/create.php">types list</a>
 
     <h1>Create task</h1>
     <form action="" method="post">
@@ -67,10 +68,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <label for="type">Type:</label>
         <select name="type">
-            <option value="PHP">PHP</option>
-            <option value="Frontend">Frontend</option>
-            <option value="Logistic">Logistic</option>
-        </select><br><br>
+        <?php
+            foreach ($_SESSION["types"] as $index => $item) {
+                echo "<option value=". $item['title'] . ">" . $item['title'] . "</option>";
+            }
+        ?>
+        </select>
+
+        <br><br>
 
         <button type="submit">Add Todo</button>
     </form><br>
