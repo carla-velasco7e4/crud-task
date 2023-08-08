@@ -28,18 +28,6 @@ function create($title, $description, $status, $assignedTo, $type) {
     $_SESSION["tasks"][] = $inputForm;
 }
 
-
-//check the request method (to see if the form has been sended)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $status = $_POST['status'];
-    $assignedTo = $_POST['assignedTo'];
-    $type = $_POST['type'];
-
-    //creating a new todo item
-    create($title, $description, $status, $assignedTo, $type);
-}
 ?>
 
 <a href="index.php">logout</a><br><br>

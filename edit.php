@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?= $taskToEdit['status'] == "Done" ? "selected" : "" ; ?>
     </select>
-    <br><Sbr>
+    <br><br>
 
     <!-- Display other input fields for editing -->
     <button type="submit">Update Task</button>
