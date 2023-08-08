@@ -8,8 +8,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $lowercaseInput = strtolower($_GET['c']);
         $className = ucfirst($lowercaseInput) . 'Controller';
 
-        if ($_GET['m'] == 'create') {
-            var_dump(Controller\TypeController::create());
+        if (class_exists($className) && method_exists($className, $_GET['m'])) {
+
+            if ($_GET['m'] == 'create') {
+
+                $className::create();
+            }
+            if ($_GET['m'] == 'delete') {
+                $className::delete();
+            }
+            if ($_GET['m'] == 'update') {
+                $className::create();
+            }
+            if ($_GET['m'] == 'read') {
+                $className::read();
+            }
+
         }
     }
 }
