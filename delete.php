@@ -35,8 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<a href="index.php">logout</a><br><br>
+
+<h1>Delete</h1>
 <p>Do you want to delete this task?</p>
-<a href="index.php">NO</a>
+<a href="create.php">No</a><br>
 <form action="delete.php?id=<?= $taskId; ?>" method="post">
     <input type="hidden" name="id" value="<?= $taskToEdit['id']; ?>">
     <button type="submit">Yes</button>

@@ -48,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<a href="index.php">logout</a><br><br>
+
+<h1>Edit</h1>
 <form action="edit.php?id=<?= $taskId; ?>" method="post">
     <input type="hidden" name="id" value="<?= $taskToEdit['id']; ?>">
 
