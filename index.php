@@ -97,10 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Type: " . $item['type'] . "<br>";
             echo "Created At: " . $item['createdAt'] . "<br>";
             echo "Last Updated: " . $item['lastUpdated'] . "<br>";
-            //if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] === true) {
+            if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] === true) {
                 echo '<a href="edit.php?id=' . $item['id'] . '">Edit</a><br>';
                 echo '<a href="delete.php?id=' . $item['id'] . '">Delete</a><br>';
-            //}
+            }
             echo '</div>';
         }
     }
