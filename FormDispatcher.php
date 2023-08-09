@@ -1,29 +1,20 @@
 <?php
+
 session_start();
 
-use Controller\TypeController;
+include_once("./Controller/TaskController.php");
+include_once("./Controller/TypeController.php");
 
+//var_dump('session_start9');die();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_GET['c'])) {
-        $lowercaseInput = strtolower($_GET['c']);
-        $className = ucfirst($lowercaseInput) . 'Controller';
+    if (isset($_POST['c']) && isset($_POST['m'])) {
+        $controllerName = 'Controller\\' . ucfirst(strtolower($_POST['c'])) . 'Controller';
+        $methodName = $_POST['m'];
 
-        if (class_exists($className) && method_exists($className, $_GET['m'])) {
-
-            if ($_GET['m'] == 'create') {
-
-                $className::create();
-            }
-            if ($_GET['m'] == 'delete') {
-                $className::delete();
-            }
-            if ($_GET['m'] == 'update') {
-                $className::create();
-            }
-            if ($_GET['m'] == 'read') {
-                $className::read();
-            }
-
+        if (class_exists($controllerName) && method_exists($controllerName, $methodName)) {
+            $controllerName::$methodName($_POST);
+        } else {
+            echo "Error: Class or method not found.";
         }
     }
 }

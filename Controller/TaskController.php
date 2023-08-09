@@ -2,15 +2,15 @@
 
 namespace Controller;
 
-require_once("./Entity/Type.php");
+require_once("./Entity/Task.php");
 
-class TypeController
+class TaskController
 {
     //CREATE
     //loads create form
-    public static function create($type)
+    public static function create($task)
     {
-        include '../views/type/new.php';
+        include '../views/task/new.php';
     }
 
     //saves data
@@ -18,9 +18,9 @@ class TypeController
     {
         if(empty($_POST['save']))
             throw new Exception('No data recieved');
-        $newType = new \Entity\Type();
-        $newType->setTitle($_POST['title']);
-        $_SESSION["types"][] = serialize($newType);
+        $newTask = new \Entity\Task();
+        $newTask->setTitle($_POST['title']);
+        $_SESSION["tasks"][] = serialize($newTask);
         include '../views/success.php';
     }
 
@@ -32,10 +32,10 @@ class TypeController
     {
         if (!$id)
             throw new Exception("Id not included");
-        $type = self::getById($id);
-        if(!$type)
-            throw new Exception("The type doesn't exist $id.");
-        include '../views/type/update.php';
+        $task = self::getById($id);
+        if(!$task)
+            throw new Exception("The task doesn't exist $id.");
+        include '../views/task/update.php';
     }
 
     // makes the update
@@ -44,11 +44,11 @@ class TypeController
         if (empty($_POST['save']))
             throw new Exception('No data');
         $id = intval($_POST['id']);
-        $type = self::getById($id);
-        if(!$type)
-            throw new Exception("The type doesn't exist $id.");
-        $type->setTitle($_POST['title']);
-        $_SESSION["types"][] = serialize($type);
+        $task = self::getById($id);
+        if(!$task)
+            throw new Exception("The task doesn't exist $id.");
+        $task->setTitle($_POST['title']);
+        $_SESSION["tasks"][] = serialize($task);
     }
 
 
@@ -57,10 +57,10 @@ class TypeController
     public function delete(int $id = 0) {
         if(!$id)
             throw new Exception("No data");
-        $type = self::getById($id);
-        if(!type)
-            throw new Exception("The type doesn't exist $id");
-        include '../views/type/delete.php';
+        $task = self::getById($id);
+        if(!task)
+            throw new Exception("The task doesn't exist $id");
+        include '../views/task/delete.php';
     }
 
     //makes the delete action
@@ -68,9 +68,9 @@ class TypeController
         if(empty($_POST['delete']))
             throw new Exception('No confirm was sended.');
         $id = intval($_POST['id']);
-        foreach ($_SESSION["types"] as $key => $item) {
+        foreach ($_SESSION["tasks"] as $key => $item) {
             if ($item['id'] == $id) {
-                unset($_SESSION["types"][$key]);
+                unset($_SESSION["tasks"][$key]);
                 break;
             }
         }
@@ -78,7 +78,7 @@ class TypeController
     }
 
     public static function getById($id) {
-        foreach ($_SESSION["types"] as $item) {
+        foreach ($_SESSION["tasks"] as $item) {
             if ($item['id'] == $id) {
                 return $item;
             }

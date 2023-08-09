@@ -13,6 +13,7 @@ class Task {
     private $lastUpdated;
 
     public function __construct() {
+        var_dump('alo'); die();
         $this->createdAt = date('Y-m-d H:i:s');
         $this->lastUpdated = date('Y-m-d H:i:s');
     }
