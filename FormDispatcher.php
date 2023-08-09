@@ -5,7 +5,6 @@ session_start();
 include_once("./Controller/TaskController.php");
 include_once("./Controller/TypeController.php");
 
-//var_dump('session_start9');die();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['c']) && isset($_POST['m'])) {
         $controllerName = 'Controller\\' . ucfirst(strtolower($_POST['c'])) . 'Controller';

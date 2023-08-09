@@ -78,6 +78,8 @@ class TypeController
     }
 
     public static function getById($id) {
+        if (empty($id))
+            return null;
         foreach ($_SESSION["types"] as $item) {
             if ($item['id'] == $id) {
                 return $item;

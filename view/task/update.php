@@ -1,4 +1,5 @@
 <?php include '../views/components/menu.php';?>
+<?php session_start() ?>
 
 <?php if($_SESSION['isAdmin'] === true) { ?>
 

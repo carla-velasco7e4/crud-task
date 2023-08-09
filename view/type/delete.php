@@ -1,4 +1,4 @@
-
+<?php session_start() ?>
 
 <p>Do you want to delete this task?</p>
 <a href="../../index.php">No</a><br>

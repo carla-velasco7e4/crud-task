@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use MongoDB\Driver\Exception\ExecutionTimeoutException;
+
 require_once("./Entity/Task.php");
 
 class TaskController
@@ -77,7 +79,9 @@ class TaskController
         include '../views/success.php';
     }
 
-    public static function getById($id) {
+    public static function getById(int $id = 0) {
+        if (empty($id))
+            return null;
         foreach ($_SESSION["tasks"] as $item) {
             if ($item['id'] == $id) {
                 return $item;

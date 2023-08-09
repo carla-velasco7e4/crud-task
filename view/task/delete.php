@@ -1,3 +1,4 @@
+<?php session_start() ?>
 
 
 <p>Do you want to delete this task?</p>

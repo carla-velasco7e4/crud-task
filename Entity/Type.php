@@ -4,7 +4,6 @@ namespace Entity;
 
 class Type {
 
-
     private static $counter = 0;
     private $id;
     private $title;
@@ -12,8 +11,6 @@ class Type {
     public function __construct() {
         self::$counter++;
         $this->id = self::$counter;
-        var_dump($this->id);
-        echo 'typeconstruct2';
     }
 
     // Getters

@@ -3,6 +3,7 @@
 namespace Entity;
 
 class Task {
+    private static $counter = 0;
     private $id;
     private $title;
     private $description;
@@ -13,7 +14,8 @@ class Task {
     private $lastUpdated;
 
     public function __construct() {
-        var_dump('alo'); die();
+        self::$counter++;
+        $this->id = self::$counter;
         $this->createdAt = date('Y-m-d H:i:s');
         $this->lastUpdated = date('Y-m-d H:i:s');
     }
